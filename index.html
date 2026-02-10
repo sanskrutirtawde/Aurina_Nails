@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurina Pressons - Custom Press-On Nails & Extensions</title>
+    <title>Aurina Nails - Custom Press-On Nails & Extensions</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>💅</text></svg>">
     <style>
         * {
@@ -16,6 +16,7 @@
             font-family: 'Georgia', serif;
             line-height: 1.6;
             color: #333;
+            scroll-behavior: smooth;
         }
 
         header {
@@ -57,9 +58,7 @@
             transition: opacity 0.3s;
         }
 
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
+        .nav-links a:hover { opacity: 0.8; }
 
         .menu-toggle {
             display: none;
@@ -73,7 +72,6 @@
             height: 3px;
             background: white;
             border-radius: 3px;
-            transition: 0.3s;
         }
 
         @media (max-width: 768px) {
@@ -84,31 +82,13 @@
                 right: 0;
                 background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 100%);
                 flex-direction: column;
-                padding: 0;
-                gap: 0;
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.3s ease;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
             }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 1rem 2rem;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
-
-            .nav-links.active {
-                max-height: 300px;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
+            .nav-links.active { max-height: 400px; }
+            .menu-toggle { display: flex; }
+            .nav-links a { padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.2); }
         }
 
         .hero {
@@ -117,19 +97,8 @@
             text-align: center;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            color: #d4406c;
-            margin-bottom: 1rem;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
+        .hero h1 { font-size: 3rem; color: #d4406c; margin-bottom: 1rem; }
+        .hero p { font-size: 1.3rem; color: #666; max-width: 600px; margin: 0 auto 2rem; }
 
         .cta-button {
             background: #d4406c;
@@ -139,29 +108,17 @@
             border-radius: 50px;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
             text-decoration: none;
             display: inline-block;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(212, 64, 108, 0.4);
-        }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(212, 64, 108, 0.4); }
 
-        .services {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #d4406c;
-            margin-bottom: 3rem;
-        }
-
+        /* Services Grid */
+        .services { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; }
+        .services h2 { text-align: center; font-size: 2.5rem; color: #d4406c; margin-bottom: 3rem; }
+        
         .service-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -175,35 +132,64 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s;
             text-align: center;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
+        .service-card:hover { transform: translateY(-10px); }
+        .service-card h3 { color: #d4406c; font-size: 1.5rem; margin-bottom: 1rem; }
+        .service-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+        /* Shop Section */
+        .shop-section { background: #fff; padding: 4rem 2rem; text-align: center; }
+        .shop-section h2 { color: #d4406c; margin-bottom: 3rem; font-size: 2.5rem; }
+        
+        .product-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
-        .service-card h3 {
-            color: #d4406c;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        .product-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            border: 1px solid #ffd1dc;
         }
 
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .gallery {
+        .product-image {
             background: #fff0f5;
-            padding: 4rem 2rem;
+            height: 220px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin-bottom: 1rem;
         }
 
-        .gallery h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #d4406c;
-            margin-bottom: 3rem;
+        .price { font-weight: bold; color: #d4406c; font-size: 1.3rem; margin: 0.5rem 0 1.2rem; }
+
+        .buy-now-btn {
+            display: block;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
+        .buy-now-btn:hover { background: #128C7E; }
+
+        /* Gallery */
+        .gallery { background: #fff0f5; padding: 4rem 2rem; }
+        .gallery h2 { text-align: center; font-size: 2.5rem; color: #d4406c; margin-bottom: 3rem; }
         .gallery-grid {
             max-width: 1200px;
             margin: 0 auto;
@@ -211,7 +197,6 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
-
         .gallery-item {
             background: #ffd1dc;
             height: 250px;
@@ -222,101 +207,53 @@
             font-size: 1.2rem;
             color: #d4406c;
             font-weight: bold;
-            transition: transform 0.3s;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .contact {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .contact h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #d4406c;
-            margin-bottom: 2rem;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #666;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ffd1dc;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        footer {
-            background: #333;
+        /* Inquiry Section */
+        .contact { max-width: 600px; margin: 4rem auto; padding: 0 2rem; text-align: center; }
+        .contact h2 { font-size: 2.5rem; color: #d4406c; margin-bottom: 1rem; }
+        
+        .social-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 1rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
             color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            transition: 0.3s;
         }
+        .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .whatsapp { background-color: #25D366; }
+        .social-btn:hover { transform: scale(1.03); }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-        }
+        footer { background: #333; color: white; text-align: center; padding: 2rem; margin-top: 4rem; }
     </style>
 </head>
 <body>
+
     <header>
         <nav>
-            <div class="logo">Aurina Pressons</div>
+            <div class="logo">Aurina Nails</div>
             <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" onclick="closeMenu()">Home</a></li>
                 <li><a href="#services" onclick="closeMenu()">Services</a></li>
-                <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
-                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+                <li><a href="#shop" onclick="closeMenu()">Shop</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Inquiry</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="home" class="hero">
-        <h1>Welcome to Aurina Pressons</h1>
+        <h1>Welcome to Aurina Nails</h1>
         <p>Customized press-on nails and professional nail extensions that make you shine</p>
-        <a href="#contact" class="cta-button">Book Your Appointment</a>
+        <a href="https://wa.me/7620816661?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment%20for%20nails." target="_blank" class="cta-button">Book Your Appointment</a>
     </section>
 
     <section id="services" class="services">
@@ -325,17 +262,41 @@
             <div class="service-card">
                 <div class="service-icon">💅</div>
                 <h3>Custom Press-On Nails</h3>
-                <p>Handcrafted, reusable press-on nails designed to match your unique style. Choose from endless designs or create your own.</p>
+                <p>Handcrafted, reusable press-on nails designed to match your unique style.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">✨</div>
                 <h3>Nail Extensions</h3>
-                <p>Professional nail extension services for lasting beauty. Expert application with premium materials.</p>
+                <p>Professional nail extension services for lasting beauty with premium materials.</p>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🎨</div>
-                <h3>Custom Designs</h3>
-                <p>From elegant French tips to bold artistic designs, we bring your nail dreams to life with personalized touches.</p>
+            <a href="#shop" class="service-card">
+                <div class="service-icon">🛍️</div>
+                <h3>Buy Press-Ons</h3>
+                <p>Browse our collection of ready-to-wear sets available for immediate purchase.</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="shop" class="shop-section">
+        <h2>Ready-to-Wear Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">🌸</div>
+                <h4>Classic French Set</h4>
+                <p class="price">₹799</p>
+                <a href="https://wa.me/7620816661?text=I%20want%20to%20buy%20this%20presson:%20Classic%20French%20Set" target="_blank" class="buy-now-btn">Buy Now</a>
+            </div>
+            <div class="product-card">
+                <div class="product-image">💎</div>
+                <h4>Diamond Glam Set</h4>
+                <p class="price">₹1,299</p>
+                <a href="https://wa.me/7620816661?text=I%20want%20to%20buy%20this%20presson:%20Diamond%20Glam%20Set" target="_blank" class="buy-now-btn">Buy Now</a>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🔥</div>
+                <h4>Sunset Ombre</h4>
+                <p class="price">₹999</p>
+                <a href="https://wa.me/7620816661?text=I%20want%20to%20buy%20this%20presson:%20Sunset%20Ombre" target="_blank" class="buy-now-btn">Buy Now</a>
             </div>
         </div>
     </section>
@@ -347,48 +308,33 @@
             <div class="gallery-item">Glitter Glam</div>
             <div class="gallery-item">Floral Designs</div>
             <div class="gallery-item">Ombre Style</div>
-            <div class="gallery-item">Gem Accents</div>
-            <div class="gallery-item">Custom Art</div>
         </div>
     </section>
 
     <section id="contact" class="contact">
         <h2>Get in Touch</h2>
-        <form class="contact-form">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone">
-            </div>
-            <div class="form-group">
-                <label for="message">Message / Design Request</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <button type="submit" class="cta-button">Send Message</button>
-        </form>
+        <p>For custom orders or inquiries, contact us below:</p>
+        <div class="social-links">
+            <a href="https://instagram.com/aurina_Nails" target="_blank" class="social-btn instagram">
+                Follow on Instagram
+            </a>
+            <a href="https://wa.me/7620816661?text=Hi!%20I%20have%20an%20inquiry%20about%20your%20nails." target="_blank" class="social-btn whatsapp">
+                Message on WhatsApp
+            </a>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Aurina Pressons. All rights reserved.</p>
+        <p>&copy; 2024 Aurina Nails. All rights reserved.</p>
         <p>Beautiful nails, crafted with love 💖</p>
     </footer>
 
     <script>
         function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
         }
-
         function closeMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.remove('active');
+            document.getElementById('navLinks').classList.remove('active');
         }
     </script>
 </body>
