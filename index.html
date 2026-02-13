@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - Aurina Nails | Ready-to-Wear Press-On Sets</title>
-    <meta name="description" content="Shop our collection of ready-to-wear press-on nail sets. Quick delivery, reusable designs, premium quality.">
+    <title>Aurina Nails - Custom Press-On Nails & Extensions in Pune</title>
+    <meta name="description" content="Professional custom press-on nails and nail extensions in Pune. Reusable, artistic designs with gel polish finish. Book your appointment today!">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>💅</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,7 +13,20 @@
             font-family: 'Georgia', serif; 
             line-height: 1.6; 
             color: #333; 
-            background: #fff;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* Watermark Logo Background */
+        body::before {
+            content: "💅";
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40rem;
+            opacity: 0.02; 
+            z-index: -1;
+            pointer-events: none;
         }
 
         header { 
@@ -32,6 +45,7 @@
             justify-content: space-between; 
             align-items: center; 
             padding: 0 2rem; 
+            position: relative; 
         }
         
         .brand-container { display: flex; align-items: center; gap: 12px; }
@@ -51,8 +65,7 @@
             font-size: 2rem; 
             font-weight: bold; 
             color: #fff; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
         }
 
         .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -61,193 +74,373 @@
             text-decoration: none; 
             font-weight: 800; 
             transition: opacity 0.3s; 
+            padding: 0.5rem 0;
         }
         .nav-links a:hover { opacity: 0.7; }
-
-        .shop-hero {
-            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 100%);
-            padding: 3rem 2rem;
-            text-align: center;
+        
+        .menu-toggle { 
+            display: none; 
+            flex-direction: column; 
+            cursor: pointer; 
+            gap: 5px; 
         }
-        .shop-hero h1 {
-            font-size: 3rem;
-            color: #d4406c;
-            margin-bottom: 0.5rem;
-        }
-        .shop-hero p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
+        .menu-toggle span { 
+            width: 25px; 
+            height: 3px; 
+            background: white; 
+            border-radius: 3px; 
+            transition: 0.3s;
         }
 
-        .filter-section {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+        @media (max-width: 768px) {
+            .nav-links { 
+                position: absolute; 
+                top: calc(100% + 1rem); 
+                left: 0; 
+                right: 0; 
+                background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 100%); 
+                flex-direction: column; 
+                max-height: 0; 
+                overflow: hidden; 
+                transition: max-height 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { max-height: 500px; padding: 1rem 0; }
+            .nav-links a { padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.2); }
+            .menu-toggle { display: flex; }
+        }
+
+        .hero { 
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 100%); 
+            padding: 5rem 2rem; 
+            text-align: center; 
+        }
+        .hero h1 { 
+            font-size: 3rem; 
+            color: #d4406c; 
+            margin-bottom: 1rem; 
+        }
+        .hero p { 
+            font-size: 1.3rem; 
+            color: #666; 
+            max-width: 600px; 
+            margin: 0 auto 2rem; 
+        }
+        .hero-buttons {
             display: flex;
             gap: 1rem;
-            flex-wrap: wrap;
             justify-content: center;
+            flex-wrap: wrap;
         }
-        .filter-btn {
-            padding: 0.75rem 1.5rem;
-            border: 2px solid #d4406c;
-            background: white;
-            color: #d4406c;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
+        .cta-button { 
+            background: #d4406c; 
+            color: white; 
+            padding: 1rem 2.5rem; 
+            border: none; 
+            border-radius: 50px; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            text-decoration: none; 
+            display: inline-block; 
             transition: 0.3s;
             font-family: 'Georgia', serif;
         }
-        .filter-btn:hover,
-        .filter-btn.active {
+        .cta-button:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 20px rgba(212, 64, 108, 0.4); 
+        }
+        .cta-button.secondary {
+            background: white;
+            color: #d4406c;
+            border: 2px solid #d4406c;
+        }
+        .cta-button.secondary:hover {
             background: #d4406c;
             color: white;
         }
 
-        .shop-container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 2rem;
+        .services { 
+            max-width: 1200px; 
+            margin: 4rem auto; 
+            padding: 0 2rem; 
         }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+        .services h2 { 
+            text-align: center; 
+            font-size: 2.5rem; 
+            color: #d4406c; 
+            margin-bottom: 3rem; 
         }
-
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        .service-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+        }
+        .service-card { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
+            text-align: center; 
+            text-decoration: none; 
+            color: inherit; 
             transition: 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        .product-card:hover {
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffd1dc, #ffb6c1);
+        }
+        .service-card:hover { 
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
-
-        .product-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            position: relative;
+        .service-icon { 
+            font-size: 3rem; 
+            margin-bottom: 1rem; 
         }
-        .badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #d4406c;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-        .badge.new {
-            background: #25D366;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-        .product-name {
-            font-size: 1.3rem;
+        .service-card h3 {
             color: #d4406c;
             margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        .product-description {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-        .product-features {
-            list-style: none;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        .product-features li {
-            padding: 0.3rem 0;
-        }
-        .product-features li:before {
-            content: "✓ ";
-            color: #d4406c;
-            font-weight: bold;
-        }
-        .product-price {
-            font-size: 1.8rem;
-            color: #d4406c;
-            font-weight: bold;
-            margin: 1rem 0;
-        }
-        .original-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 1.2rem;
-            margin-left: 0.5rem;
-        }
-        .buy-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #d4406c;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            font-family: 'Georgia', serif;
-        }
-        .buy-btn:hover {
-            background: #b83357;
-            transform: scale(1.02);
         }
 
-        .custom-order-cta {
-            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 100%);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 4rem;
+
+        /* Information & Feedback Section */
+        .info-section { 
+            max-width: 1100px; 
+            margin: 4rem auto; 
+            padding: 0 2rem; 
+            display: grid; 
+            grid-template-columns: 1.2fr 1fr; 
+            gap: 3rem; 
+            align-items: center; 
         }
-        .custom-order-cta h2 {
+        .info-content h2 { 
+            color: #d4406c; 
+            font-size: 2.5rem; 
+            margin-bottom: 1.5rem; 
+        }
+        .info-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        .info-content ul li {
+            margin: 0.5rem 0;
+            color: #666;
+        }
+        .feedback-container { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            border-left: 5px solid #ffb6c1; 
+        }
+        .feedback-container h3 {
             color: #d4406c;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
-        .custom-order-cta p {
+        .testimonial { 
+            font-style: italic; 
+            margin-bottom: 1.5rem; 
+            color: #666; 
+            position: relative; 
+            padding-left: 20px; 
+        }
+        .testimonial:before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 2rem;
+            color: #ffb6c1;
+        }
+        .client-name { 
+            font-weight: bold; 
+            color: #d4406c; 
+            display: block; 
+            margin-top: 5px; 
+            font-style: normal; 
+        }
+
+        /* FAQ Section */
+        .faq {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .faq h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #d4406c;
+            margin-bottom: 3rem;
+        }
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: #d4406c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .faq-question:hover {
+            background: #fff0f5;
+        }
+        .faq-question:after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+        .faq-question.active:after {
+            content: '−';
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+            color: #666;
+        }
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Gallery Section */
+        .gallery { 
+            background: #fff0f5; 
+            padding: 4rem 2rem; 
+        }
+        .gallery h2 { 
+            text-align: center; 
+            font-size: 2.5rem; 
+            color: #d4406c; 
+            margin-bottom: 1rem; 
+        }
+        .gallery-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        .gallery-grid { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 1.5rem; 
+        }
+        .gallery-item { 
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 100%);
+            height: 300px; 
+            border-radius: 15px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.2rem; 
+            color: white; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            border: 2px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .gallery-item:hover:before {
+            opacity: 1;
+        }
+        .gallery-item:hover { 
+            transform: scale(1.05); 
+        }
+        .gallery-placeholder {
+            text-align: center;
+            padding: 2rem;
+        }
+        .gallery-placeholder p {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Instagram Feed Placeholder */
+        .instagram-feed {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            text-align: center;
+        }
+        .instagram-embed {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Contact Section */
+        .contact { 
+            max-width: 600px; 
+            margin: 4rem auto; 
+            padding: 0 2rem; 
+            text-align: center; 
+        }
+        .contact h2 { 
+            font-size: 2.5rem; 
+            color: #d4406c; 
+            margin-bottom: 1rem; 
+        }
+        .contact p {
             color: #666;
             margin-bottom: 2rem;
-            font-size: 1.1rem;
         }
-        .cta-button {
-            background: #d4406c;
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
+        .social-links { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1rem; 
+            margin-top: 2rem; 
+        }
+        .social-btn { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 12px; 
+            padding: 1rem; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            color: white; 
             transition: 0.3s;
-            font-family: 'Georgia', serif;
+            font-size: 1.1rem;
         }
-        .cta-button:hover {
+        .social-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(212, 64, 108, 0.4);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .instagram { 
+            background: linear-gradient(45deg, #f09433, #bc1888); 
+        }
+        .whatsapp { 
+            background-color: #25D366; 
         }
 
         footer { 
@@ -255,15 +448,26 @@
             color: white; 
             text-align: center; 
             padding: 2rem; 
-            margin-top: 3rem;
+        }
+        footer p {
+            margin: 0.5rem 0;
+        }
+        
+        @media (max-width: 900px) { 
+            .info-section { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
+            .pricing-card.featured { transform: scale(1); }
         }
 
         @media (max-width: 768px) {
-            .shop-hero h1 {
-                font-size: 2rem;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
             }
-            .product-grid {
-                grid-template-columns: 1fr;
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -274,216 +478,227 @@
         <nav>
             <div class="brand-container">
                 <div class="header-logo">💅</div>
-                <a href="index.html" class="logo-text">Aurina Nails</a>
+                <div class="logo-text">Aurina Nails</div>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html">← Back to Home</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
-    <section class="shop-hero">
-        <h1>Shop Our Collection</h1>
-        <p>Ready-to-wear press-on nail sets • Quick delivery • Reusable designs</p>
+    <section id="home" class="hero">
+        <h1>Welcome to Aurina Nails</h1>
+        <p>Customized press-on nails and professional nail extensions that make you shine ✨</p>
+        <div class="hero-buttons">
+            <a href="https://wa.me/918857016884?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment%20for%20nails." target="_blank" class="cta-button">Book Your Appointment</a>
+            <a href="shop.html" class="cta-button secondary">Browse Shop</a>
+        </div>
     </section>
 
-    <div class="filter-section">
-        <button class="filter-btn active" onclick="filterProducts('all')">All Designs</button>
-        <button class="filter-btn" onclick="filterProducts('basic')">Basic (₹399)</button>
-        <button class="filter-btn" onclick="filterProducts('premium')">Premium (₹599-₹799)</button>
-        <button class="filter-btn" onclick="filterProducts('new')">New Arrivals</button>
-    </div>
-
-    <div class="shop-container">
-        <div class="product-grid" id="productGrid">
-            
-            <!-- Product 1 -->
-            <div class="product-card" data-category="basic">
-                <div class="product-image">
-                    💅
-                    <span class="badge new">NEW</span>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Classic French Tips</h3>
-                    <p class="product-description">Timeless elegance with a modern twist</p>
-                    <ul class="product-features">
-                        <li>Almond shape</li>
-                        <li>Nude base with white tips</li>
-                        <li>Reusable 5-7 times</li>
-                    </ul>
-                    <div class="product-price">₹399</div>
-                    <a href="https://wa.me/918857016884?text=Hi!%20I'd%20like%20to%20order%20the%20Classic%20French%20Tips%20set" class="buy-btn">Order Now</a>
-                </div>
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">💅</div>
+                <h3>Custom Press-Ons</h3>
+                <p>Reusable, artistic nails crafted to match your exact size and style preferences.</p>
             </div>
-
-            <!-- Product 2 -->
-            <div class="product-card" data-category="premium">
-                <div class="product-image">
-                    ✨
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Rose Gold Glitter</h3>
-                    <p class="product-description">Sparkle and shine for special occasions</p>
-                    <ul class="product-features">
-                        <li>Coffin shape</li>
-                        <li>Rose gold glitter gradient</li>
-                        <li>Premium gel finish</li>
-                    </ul>
-                    <div class="product-price">₹599</div>
-                    <a href="https://wa.me/918857016884?text=Hi!%20I'd%20like%20to%20order%20the%20Rose%20Gold%20Glitter%20set" class="buy-btn">Order Now</a>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Nail Extensions</h3>
+                <p>Professional gel and acrylic extensions for long-lasting beauty and durability.</p>
             </div>
-
-            <!-- Product 3 -->
-            <div class="product-card" data-category="premium new">
-                <div class="product-image">
-                    🌸
-                    <span class="badge new">NEW</span>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Cherry Blossom Art</h3>
-                    <p class="product-description">Delicate hand-painted floral designs</p>
-                    <ul class="product-features">
-                        <li>Oval shape</li>
-                        <li>Pink ombre with flowers</li>
-                        <li>3D flower accents</li>
-                    </ul>
-                    <div class="product-price">₹799</div>
-                    <a href="https://wa.me/918857016884?text=Hi!%20I'd%20like%20to%20order%20the%20Cherry%20Blossom%20Art%20set" class="buy-btn">Order Now</a>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="product-card" data-category="basic">
-                <div class="product-image">
-                    🌈
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Pastel Ombre</h3>
-                    <p class="product-description">Soft gradient in dreamy pastel shades</p>
-                    <ul class="product-features">
-                        <li>Almond shape</li>
-                        <li>Pink to lavender fade</li>
-                        <li>Glossy finish</li>
-                    </ul>
-                    <div class="product-price">₹399</div>
-                    <a href="https://wa.me/918857016884?text=Hi!%20I'd%20like%20to%20order%20the%20Pastel%20Ombre%20set" class="buy-btn">Order Now</a>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="product-card" data-category="premium">
-                <div class="product-image">
-                    💎
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Luxury Gem Set</h3>
-                    <p class="product-description">Crystals and gems for maximum glamour</p>
-                    <ul class="product-features">
-                        <li>Stiletto shape</li>
-                        <li>Swarovski crystals</li>
-                        <li>Multiple gem placements</li>
-                    </ul>
-                    <div class="product-price">₹799</div>
-                    <a href="https://wa.me/918857016884?text=Hi!%20I'd%20like%20to%20order%20the%20Luxury%20Gem%20set" class="buy-btn">Order Now</a>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="product-card" data-category="basic new">
-                <div class="product-image">
-                    🤍
-                    <span class="badge new">NEW</span>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Minimalist Nude</h3>
-                    <p class="product-description">Clean, simple, and effortlessly chic</p>
-                    <ul class="product-features">
-                        <li>Round shape</li>
-                        <li>Natural nude shade</li>
-                        <li>Perfect for everyday</li>
-                    </ul>
-                    <div class="product-price">₹399</div>
-                    <a href="https://wa.me/918857016884?text=Hi!%20I'd%20like%20to%20order%20the%20Minimalist%20Nude%20set" class="buy-btn">Order Now</a>
-                </div>
-            </div>
-
-            <!-- Product 7 -->
-            <div class="product-card" data-category="premium">
-                <div class="product-image">
-                    💿
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Chrome Finish</h3>
-                    <p class="product-description">Mirror-like metallic shine</p>
-                    <ul class="product-features">
-                        <li>Coffin shape</li>
-                        <li>Silver chrome powder</li>
-                        <li>Futuristic look</li>
-                    </ul>
-                    <div class="product-price">₹699</div>
-                    <a href="https://wa.me/918857016884?text=Hi!%20I'd%20like%20to%20order%20the%20Chrome%20Finish%20set" class="buy-btn">Order Now</a>
-                </div>
-            </div>
-
-            <!-- Product 8 -->
-            <div class="product-card" data-category="premium new">
-                <div class="product-image">
-                    🖤
-                    <span class="badge new">NEW</span>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Gothic Black & Gold</h3>
-                    <p class="product-description">Bold statement with gold accents</p>
-                    <ul class="product-features">
-                        <li>Stiletto shape</li>
-                        <li>Matte black with gold leaf</li>
-                        <li>Edgy & elegant</li>
-                    </ul>
-                    <div class="product-price">₹699</div>
-                    <a href="https://wa.me/918857016884?text=Hi!%20I'd%20like%20to%20order%20the%20Gothic%20Black%20&%20Gold%20set" class="buy-btn">Order Now</a>
-                </div>
-            </div>
-
+            <a href="shop.html" class="service-card">
+                <div class="service-icon">🛍️</div>
+                <h3>Shop Ready-to-Wear Collection</h3>
+                <p>Browse our curated collection of pre-designed press-on sets available for immediate delivery.</p>
+            </a>
         </div>
-    </div>
+    </section>
 
-    <section class="custom-order-cta">
-        <h2>Don't See What You're Looking For?</h2>
-        <p>We create custom designs tailored to your vision. Share your ideas and we'll bring them to life!</p>
-        <a href="https://wa.me/918857016884?text=Hi!%20I'd%20like%20to%20order%20a%20custom%20nail%20design" class="cta-button">Request Custom Design</a>
+
+
+    <section class="info-section">
+        <div class="info-content">
+            <h2>Why Choose Press-Ons?</h2>
+            <p>At Aurina Nails, we believe your nails are your best accessory. Our press-on nails offer the perfect solution for beautiful nails without the commitment.</p>
+            <ul>
+                <li><strong>Reusable:</strong> Get 5-7 wears from each set with proper care</li>
+                <li><strong>No Damage:</strong> Unlike extensions, press-ons don't harm your natural nails</li>
+                <li><strong>Quick Change:</strong> Switch your style in just 10 minutes</li>
+                <li><strong>Custom Fit:</strong> Measured to fit your exact nail size</li>
+                <li><strong>High Quality:</strong> Premium gel polish for a salon-quality shine</li>
+            </ul>
+        </div>
+        <div class="feedback-container">
+            <h3>Happy Clients ❤️</h3>
+            <div class="testimonial">
+                The quality of these press-ons is amazing! They look just like real extensions and I've worn mine 6 times already.
+                <span class="client-name">- Priya S.</span>
+            </div>
+            <div class="testimonial">
+                I love how I can change my look in 10 minutes. The custom designs are always so unique and get tons of compliments.
+                <span class="client-name">- Anjali M.</span>
+            </div>
+            <div class="testimonial">
+                Best investment! No more expensive salon visits. These last weeks and I can reuse them. Aurina's designs are stunning!
+                <span class="client-name">- Sneha K.</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                How long do press-on nails last?
+            </div>
+            <div class="faq-answer">
+                With proper application and care, our press-on nails can last 1-2 weeks per wear. Each set is reusable 5-7 times, making them a cost-effective choice for beautiful nails.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                How do I apply press-on nails?
+            </div>
+            <div class="faq-answer">
+                We provide detailed instructions with each order. The basic process: clean your nails, apply the included adhesive tabs or glue, press firmly for 30 seconds. Full video tutorial available on our Instagram!
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                What's your turnaround time for custom orders?
+            </div>
+            <div class="faq-answer">
+                Basic designs: 2-3 days. Premium/complex designs: 3-5 days. Rush orders available for an additional fee. We'll always communicate estimated delivery when you place your order.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                Do you ship outside Pune?
+            </div>
+            <div class="faq-answer">
+                Yes! We ship across India. Shipping costs vary by location. Contact us on WhatsApp with your pincode for accurate shipping estimates.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                Can I request a specific design?
+            </div>
+            <div class="faq-answer">
+                Absolutely! We love custom requests. Send us inspiration photos on WhatsApp or Instagram, and we'll create a design just for you. Custom design pricing starts at ₹599.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                How do I know my nail size?
+            </div>
+            <div class="faq-answer">
+                We'll send you a sizing guide when you place your order. You can measure your nails with a ruler or use our printable sizing chart. We create each set to your exact measurements for a perfect fit.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                What's the difference between press-ons and extensions?
+            </div>
+            <div class="faq-answer">
+                Press-ons are temporary, reusable, and applied at home. Extensions are semi-permanent, applied professionally, and last 2-3 weeks. Press-ons don't damage your natural nails and offer more flexibility to change styles.
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <h2>Our Work</h2>
+        <p class="gallery-subtitle">Check out our latest designs on Instagram for real photos!</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">French Tips 🤍</div>
+            <div class="gallery-item">Glitter Glam ✨</div>
+            <div class="gallery-item">Floral Designs 🌸</div>
+            <div class="gallery-item">Ombre Style 🌈</div>
+            <div class="gallery-item">Chrome Finish 💿</div>
+            <div class="gallery-item">3D Art 💎</div>
+        </div>
+        
+        <div class="instagram-feed">
+            <div class="instagram-embed">
+                <h3 style="color: #d4406c; margin-bottom: 1rem;">See Real Customer Results</h3>
+                <p style="color: #666; margin-bottom: 1rem;">Follow us on Instagram for daily nail inspiration, tutorials, and behind-the-scenes content!</p>
+                <a href="https://instagram.com/aurina_Nails" target="_blank" class="cta-button">
+                    View Instagram Gallery →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <p>Ready to transform your nails? Let's chat about your perfect design!</p>
+        <div class="social-links">
+            <a href="https://instagram.com/aurina_Nails" target="_blank" class="social-btn instagram">
+                📱 Follow on Instagram
+            </a>
+            <a href="https://wa.me/918857016884?text=Hi!%20I%20have%20an%20inquiry%20about%20your%20nails." target="_blank" class="social-btn whatsapp">
+                💬 Message on WhatsApp
+            </a>
+        </div>
+        <p style="margin-top: 2rem; color: #666;">
+            📍 Based in Pune, Maharashtra | Shipping across India
+        </p>
     </section>
 
     <footer>
         <p>&copy; 2026 Aurina Nails. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-            <a href="index.html" style="color: white; text-decoration: underline;">Back to Home</a>
-        </p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Custom Press-On Nails | Nail Extensions | Nail Art</p>
     </footer>
 
     <script>
-        function filterProducts(category) {
-            const cards = document.querySelectorAll('.product-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            // Update active button
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Filter products
-            cards.forEach(card => {
-                if (category === 'all') {
-                    card.style.display = 'block';
-                } else {
-                    const categories = card.getAttribute('data-category').split(' ');
-                    if (categories.includes(category)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function toggleFAQ(element) {
+            element.classList.toggle('active');
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
-        }
+        });
     </script>
 </body>
 </html>
